@@ -33,12 +33,13 @@
             UserSignIn = new TextBox();
             PwSignIn = new TextBox();
             SignInBtn = new Button();
+            ReturnBtn = new Button();
             SuspendLayout();
             // 
             // UserlblSignIn
             // 
             UserlblSignIn.AutoSize = true;
-            UserlblSignIn.Location = new Point(188, 231);
+            UserlblSignIn.Location = new Point(188, 293);
             UserlblSignIn.Name = "UserlblSignIn";
             UserlblSignIn.Size = new Size(180, 48);
             UserlblSignIn.TabIndex = 0;
@@ -55,7 +56,7 @@
             // 
             // UserSignIn
             // 
-            UserSignIn.Location = new Point(450, 240);
+            UserSignIn.Location = new Point(450, 293);
             UserSignIn.Name = "UserSignIn";
             UserSignIn.Size = new Size(300, 55);
             UserSignIn.TabIndex = 2;
@@ -70,7 +71,7 @@
             // 
             // SignInBtn
             // 
-            SignInBtn.Location = new Point(399, 633);
+            SignInBtn.Location = new Point(484, 627);
             SignInBtn.Name = "SignInBtn";
             SignInBtn.Size = new Size(225, 69);
             SignInBtn.TabIndex = 4;
@@ -78,12 +79,23 @@
             SignInBtn.UseVisualStyleBackColor = true;
             SignInBtn.Click += SignInBtn_Click;
             // 
+            // ReturnBtn
+            // 
+            ReturnBtn.Location = new Point(253, 627);
+            ReturnBtn.Name = "ReturnBtn";
+            ReturnBtn.Size = new Size(225, 69);
+            ReturnBtn.TabIndex = 5;
+            ReturnBtn.Text = "Go Back";
+            ReturnBtn.UseVisualStyleBackColor = true;
+            ReturnBtn.Click += ReturnBtn_Click;
+            // 
             // LoadGamePage
             // 
             AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.loadGame;
             ClientSize = new Size(1019, 1003);
+            Controls.Add(ReturnBtn);
             Controls.Add(SignInBtn);
             Controls.Add(PwSignIn);
             Controls.Add(UserSignIn);
@@ -102,5 +114,6 @@
         private TextBox UserSignIn;
         private TextBox PwSignIn;
         private Button SignInBtn;
+        private Button ReturnBtn;
     }
 }

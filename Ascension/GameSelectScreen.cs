@@ -19,22 +19,30 @@ namespace Ascension
 
         private void NewGameButton_Click(object sender, EventArgs e)
         {
-
+            NewGamePage newGamePage = new NewGamePage();
+            newGamePage.Show();     // Goes to new game page
+            this.Hide();
         }
 
         private void LoadGameButton_Click(object sender, EventArgs e)
         {
-
+            LoadGamePage loadGamePage = new LoadGamePage();
+            loadGamePage.Show();  // Goes to load game page
+            this.Hide();
         }
 
         private void OptionsButton_Click(object sender, EventArgs e)
         {
-
+            Options options = new Options();
+            options.Show();     // Goes to game options
+            this.Hide();
         }
 
         private void CreditsButton_Click(object sender, EventArgs e)
         {
-
+            Credits credits = new Credits();
+            credits.Show();     // Goes to game credits
+            this.Hide();
         }
     }
 }

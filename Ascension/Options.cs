@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace Ascension
 {
-    public partial class NewGamePage : Form
+    public partial class Options : Form
     {
-        public NewGamePage()
+        public Options()
         {
             InitializeComponent();
         }
@@ -22,8 +22,8 @@ namespace Ascension
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
             if (gameSelectScreen != null)
             {
-                gameSelectScreen.Show(); // Show the previously hidden form
-                this.Hide();           // Hide the current form
+                gameSelectScreen.Show();
+                this.Hide();
             }
         }
     }
