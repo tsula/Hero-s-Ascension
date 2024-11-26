@@ -48,7 +48,7 @@
             ReturnBtn.TabIndex = 0;
             ReturnBtn.Text = "Go Back";
             ReturnBtn.UseVisualStyleBackColor = true;
-            ReturnBtn.Click += this.ReturnBtn_Click;
+            ReturnBtn.Click += ReturnBtn_Click;
             // 
             // CreateBtn
             // 
@@ -58,6 +58,7 @@
             CreateBtn.TabIndex = 1;
             CreateBtn.Text = "Create";
             CreateBtn.UseVisualStyleBackColor = true;
+            CreateBtn.Click += CreateBtn_Click;
             // 
             // CreateUserNameLbl
             // 
@@ -105,10 +106,10 @@
             radioButton1.AutoSize = true;
             radioButton1.Location = new Point(366, 467);
             radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(271, 52);
+            radioButton1.Size = new Size(167, 52);
             radioButton1.TabIndex = 7;
             radioButton1.TabStop = true;
-            radioButton1.Text = "radioButton1";
+            radioButton1.Text = "Knight";
             radioButton1.UseVisualStyleBackColor = true;
             // 
             // radioButton2
@@ -116,10 +117,10 @@
             radioButton2.AutoSize = true;
             radioButton2.Location = new Point(366, 544);
             radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(271, 52);
+            radioButton2.Size = new Size(154, 52);
             radioButton2.TabIndex = 8;
             radioButton2.TabStop = true;
-            radioButton2.Text = "radioButton2";
+            radioButton2.Text = "Mage";
             radioButton2.UseVisualStyleBackColor = true;
             // 
             // radioButton3
@@ -127,10 +128,10 @@
             radioButton3.AutoSize = true;
             radioButton3.Location = new Point(365, 623);
             radioButton3.Name = "radioButton3";
-            radioButton3.Size = new Size(271, 52);
+            radioButton3.Size = new Size(166, 52);
             radioButton3.TabIndex = 9;
             radioButton3.TabStop = true;
-            radioButton3.Text = "radioButton3";
+            radioButton3.Text = "Rogue";
             radioButton3.UseVisualStyleBackColor = true;
             // 
             // NewGamePage

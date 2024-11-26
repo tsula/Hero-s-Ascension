@@ -26,5 +26,26 @@ namespace Ascension
                 this.Hide();           // Hide the current form
             }
         }
+
+        private void CreateBtn_Click(object sender, EventArgs e)
+        {
+            string selectedClass = ""; // Retrieve the selected class from the UI
+            if (radioButton1.Checked) selectedClass = "Knight";
+            else if (radioButton2.Checked) selectedClass = "Wizard";
+            else if (radioButton3.Checked) selectedClass = "Rogue";
+
+            GameManager.CreateNewCharacter(selectedClass);
+
+            /*Save character details (optional)
+             * 
+            SaveCharacter(GameManager.PlayerCharacter);
+
+            */
+
+            // Navigate to the World Map
+            WorldMap worldMap = new WorldMap();
+            worldMap.Show();
+            this.Hide();
+        }
     }
 }
