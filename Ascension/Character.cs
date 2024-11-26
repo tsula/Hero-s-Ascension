@@ -28,6 +28,10 @@ namespace Ascension
         public int X { get; set; }
         public int Y { get; set; }
 
+        // Login Information
+        public string Username { get; set; }
+        public string PasswordHash { get; set; }
+
         // Constructor
         public Character(string name, int health, int attack, int defense, int speed, int frameWidth, int frameHeight)
         {

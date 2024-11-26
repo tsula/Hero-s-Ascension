@@ -32,8 +32,8 @@
             CreateBtn = new Button();
             CreateUserNameLbl = new Label();
             CreatePasswordLbl = new Label();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
             ClassLbl = new Label();
             radioButton1 = new RadioButton();
             radioButton2 = new RadioButton();
@@ -78,19 +78,19 @@
             CreatePasswordLbl.TabIndex = 3;
             CreatePasswordLbl.Text = "Password";
             // 
-            // textBox1
+            // txtUsername
             // 
-            textBox1.Location = new Point(366, 136);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(300, 55);
-            textBox1.TabIndex = 4;
+            txtUsername.Location = new Point(366, 136);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(300, 55);
+            txtUsername.TabIndex = 4;
             // 
-            // textBox2
+            // txtPassword
             // 
-            textBox2.Location = new Point(366, 235);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(300, 55);
-            textBox2.TabIndex = 5;
+            txtPassword.Location = new Point(366, 235);
+            txtPassword.Name = "txtPassword";
+            txtPassword.Size = new Size(300, 55);
+            txtPassword.TabIndex = 5;
             // 
             // ClassLbl
             // 
@@ -144,8 +144,8 @@
             Controls.Add(radioButton2);
             Controls.Add(radioButton1);
             Controls.Add(ClassLbl);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(txtPassword);
+            Controls.Add(txtUsername);
             Controls.Add(CreatePasswordLbl);
             Controls.Add(CreateUserNameLbl);
             Controls.Add(CreateBtn);
@@ -162,8 +162,8 @@
         private Button CreateBtn;
         private Label CreateUserNameLbl;
         private Label CreatePasswordLbl;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox txtUsername;
+        private TextBox txtPassword;
         private Label ClassLbl;
         private RadioButton radioButton1;
         private RadioButton radioButton2;
