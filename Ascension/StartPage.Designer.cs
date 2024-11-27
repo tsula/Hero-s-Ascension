@@ -38,6 +38,8 @@
             StartButton.BackColor = Color.Black;
             StartButton.BackgroundImage = (Image)resources.GetObject("StartButton.BackgroundImage");
             StartButton.BackgroundImageLayout = ImageLayout.Zoom;
+            StartButton.FlatAppearance.BorderSize = 0;
+            StartButton.FlatStyle = FlatStyle.Flat;
             StartButton.Location = new Point(336, 271);
             StartButton.Margin = new Padding(0);
             StartButton.Name = "StartButton";
