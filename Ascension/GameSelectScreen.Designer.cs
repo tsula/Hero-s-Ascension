@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameSelectScreen));
             NewGameButton = new Button();
             LoadGameButton = new Button();
             OptionsButton = new Button();
@@ -36,56 +37,95 @@
             // 
             // NewGameButton
             // 
-            NewGameButton.Location = new Point(428, 305);
+            NewGameButton.Anchor = AnchorStyles.None;
+            NewGameButton.BackColor = SystemColors.ControlDarkDark;
+            NewGameButton.BackgroundImage = (Image)resources.GetObject("NewGameButton.BackgroundImage");
+            NewGameButton.BackgroundImageLayout = ImageLayout.Stretch;
+            NewGameButton.FlatAppearance.BorderSize = 0;
+            NewGameButton.FlatStyle = FlatStyle.Flat;
+            NewGameButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            NewGameButton.ForeColor = Color.LightYellow;
+            NewGameButton.Location = new Point(350, 226);
+            NewGameButton.Margin = new Padding(1);
             NewGameButton.Name = "NewGameButton";
-            NewGameButton.Size = new Size(225, 69);
+            NewGameButton.Size = new Size(131, 29);
             NewGameButton.TabIndex = 0;
             NewGameButton.Text = "New Game";
-            NewGameButton.UseVisualStyleBackColor = true;
+            NewGameButton.UseVisualStyleBackColor = false;
             NewGameButton.Click += NewGameButton_Click;
             // 
             // LoadGameButton
             // 
-            LoadGameButton.Location = new Point(430, 448);
+            LoadGameButton.Anchor = AnchorStyles.None;
+            LoadGameButton.BackColor = SystemColors.ControlDarkDark;
+            LoadGameButton.BackgroundImage = (Image)resources.GetObject("LoadGameButton.BackgroundImage");
+            LoadGameButton.BackgroundImageLayout = ImageLayout.Stretch;
+            LoadGameButton.FlatAppearance.BorderSize = 0;
+            LoadGameButton.FlatStyle = FlatStyle.Flat;
+            LoadGameButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
+            LoadGameButton.ForeColor = Color.LightYellow;
+            LoadGameButton.Location = new Point(350, 268);
+            LoadGameButton.Margin = new Padding(1);
             LoadGameButton.Name = "LoadGameButton";
-            LoadGameButton.Size = new Size(225, 69);
+            LoadGameButton.Size = new Size(131, 31);
             LoadGameButton.TabIndex = 1;
             LoadGameButton.Text = "Load Game";
-            LoadGameButton.UseVisualStyleBackColor = true;
+            LoadGameButton.UseVisualStyleBackColor = false;
             LoadGameButton.Click += LoadGameButton_Click;
             // 
             // OptionsButton
             // 
-            OptionsButton.Location = new Point(428, 595);
+            OptionsButton.Anchor = AnchorStyles.None;
+            OptionsButton.BackColor = SystemColors.ControlDarkDark;
+            OptionsButton.BackgroundImage = (Image)resources.GetObject("OptionsButton.BackgroundImage");
+            OptionsButton.BackgroundImageLayout = ImageLayout.Stretch;
+            OptionsButton.FlatAppearance.BorderSize = 0;
+            OptionsButton.FlatStyle = FlatStyle.Flat;
+            OptionsButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
+            OptionsButton.ForeColor = Color.LightYellow;
+            OptionsButton.Location = new Point(350, 314);
+            OptionsButton.Margin = new Padding(1);
             OptionsButton.Name = "OptionsButton";
-            OptionsButton.Size = new Size(225, 69);
+            OptionsButton.Size = new Size(131, 30);
             OptionsButton.TabIndex = 2;
             OptionsButton.Text = "Options";
-            OptionsButton.UseVisualStyleBackColor = true;
+            OptionsButton.UseVisualStyleBackColor = false;
             OptionsButton.Click += OptionsButton_Click;
             // 
             // CreditsButton
             // 
-            CreditsButton.Location = new Point(428, 737);
+            CreditsButton.Anchor = AnchorStyles.None;
+            CreditsButton.BackColor = SystemColors.ControlDarkDark;
+            CreditsButton.BackgroundImage = (Image)resources.GetObject("CreditsButton.BackgroundImage");
+            CreditsButton.BackgroundImageLayout = ImageLayout.Stretch;
+            CreditsButton.FlatAppearance.BorderSize = 0;
+            CreditsButton.FlatStyle = FlatStyle.Flat;
+            CreditsButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
+            CreditsButton.ForeColor = Color.LightYellow;
+            CreditsButton.Location = new Point(350, 358);
+            CreditsButton.Margin = new Padding(1);
             CreditsButton.Name = "CreditsButton";
-            CreditsButton.Size = new Size(225, 69);
+            CreditsButton.Size = new Size(131, 29);
             CreditsButton.TabIndex = 3;
             CreditsButton.Text = "Credits";
-            CreditsButton.UseVisualStyleBackColor = true;
+            CreditsButton.UseVisualStyleBackColor = false;
             CreditsButton.Click += CreditsButton_Click;
             // 
             // GameSelectScreen
             // 
-            AutoScaleDimensions = new SizeF(20F, 48F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.selectScreen;
-            ClientSize = new Size(1029, 1026);
+            BackgroundImageLayout = ImageLayout.Stretch;
+            ClientSize = new Size(802, 456);
             Controls.Add(CreditsButton);
             Controls.Add(OptionsButton);
             Controls.Add(LoadGameButton);
             Controls.Add(NewGameButton);
+            Margin = new Padding(1);
             Name = "GameSelectScreen";
             Text = "Game Selection";
+            WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
         }
 

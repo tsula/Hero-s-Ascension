@@ -28,28 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Options));
             ReturnBtn = new Button();
             SuspendLayout();
             // 
             // ReturnBtn
             // 
-            ReturnBtn.Location = new Point(426, 732);
+            ReturnBtn.Anchor = AnchorStyles.None;
+            ReturnBtn.BackgroundImage = (Image)resources.GetObject("ReturnBtn.BackgroundImage");
+            ReturnBtn.FlatAppearance.BorderSize = 0;
+            ReturnBtn.FlatStyle = FlatStyle.Flat;
+            ReturnBtn.Location = new Point(352, 275);
+            ReturnBtn.Margin = new Padding(2, 1, 2, 1);
             ReturnBtn.Name = "ReturnBtn";
-            ReturnBtn.Size = new Size(225, 69);
+            ReturnBtn.Size = new Size(158, 32);
             ReturnBtn.TabIndex = 0;
-            ReturnBtn.Text = "Go Back";
+            ReturnBtn.Text = "< Go Back";
             ReturnBtn.UseVisualStyleBackColor = true;
             ReturnBtn.Click += ReturnBtn_Click;
             // 
             // Options
             // 
-            AutoScaleDimensions = new SizeF(20F, 48F);
+            AutoScaleDimensions = new SizeF(14F, 22F);
             AutoScaleMode = AutoScaleMode.Font;
-            BackgroundImage = Properties.Resources.Options;
-            ClientSize = new Size(1029, 1011);
+            BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
+            BackgroundImageLayout = ImageLayout.Zoom;
+            ClientSize = new Size(802, 456);
             Controls.Add(ReturnBtn);
+            Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
+            ForeColor = Color.LightYellow;
+            Margin = new Padding(2, 1, 2, 1);
             Name = "Options";
             Text = "Options";
+            WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
         }
 
