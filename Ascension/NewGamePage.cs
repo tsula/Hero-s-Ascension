@@ -46,15 +46,12 @@ namespace Ascension
                 return;
             }
 
-            // Hash the password (basic example, consider stronger hashing like BCrypt)
-            string hashedPassword = HashPassword(password);
-
             // Create the new character
             GameManager.CreateNewCharacter(selectedClass);
 
             // Assign username and password to the character
             GameManager.PlayerCharacter.Username = username;
-            GameManager.PlayerCharacter.PasswordHash = hashedPassword;
+            GameManager.PlayerCharacter.PasswordHash = password; // removed hashing
 
             // Save the character to the database
             DatabaseManager dbManager = new DatabaseManager();
@@ -73,16 +70,5 @@ namespace Ascension
             worldMap.Show();
             this.Hide();
         }
-
-        // Hashing function (use a stronger algorithm like BCrypt for real applications)
-        private string HashPassword(string password)
-        {
-            using (var sha256 = System.Security.Cryptography.SHA256.Create())
-            {
-                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-                return Convert.ToBase64String(bytes);
-            }
-        }
-
     }
 }

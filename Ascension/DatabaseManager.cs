@@ -12,7 +12,7 @@ namespace Ascension
 
     public class DatabaseManager
     {
-        private const string ConnectionString = "Server=tcp:ascension.database.windows.net,1433;Initial Catalog=GameDB;Persist Security Info=False;User ID=teambfb;Password=GameTime2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
+        private const string ConnectionString = "Server=tcp:ascension.database.windows.net,1433;Initial Catalog=GameDB;Persist Security Info=False;User ID=teambfb;Password=Gametime2024;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=60;";
 
         public void SaveCharacter(Character character)
         {

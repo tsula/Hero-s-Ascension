@@ -11,7 +11,7 @@ namespace Ascension
         public Wizard()
             : base("Wizard", 80, 20, 5, 7, 100, 100) 
             {
-            LoadSprites("Assets/Heroes/Wizzard/Idle/Idle-Sheet.png", "Assets/Heroes/Wizzard/Run/Run-Sheet.png", "Assets/Heroes/Wizzard/Death/Death-Sheet.png");
+            LoadSprites("Assets/Heroes/Wizard/Idle/Idle-Sheet.png", "Assets/Heroes/Wizard/Run/Run-Sheet.png", "Assets/Heroes/Wizard/Death/Death-Sheet.png");
         }
 
         public override int AttackEnemy()
