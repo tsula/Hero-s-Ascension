@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Drawing;
 
 namespace Ascension
 {
@@ -40,20 +38,29 @@ namespace Ascension
             Attack = attack;
             Defense = defense;
             Speed = speed;
-            FrameWidth = frameWidth;
-            FrameHeight = frameHeight;
-            State = CharacterState.Idle; // Default state
 
+            FrameWidth = 128 / 4; // 32 pixels per frame
+            FrameHeight = 32;
+
+            State = CharacterState.Idle; // Default state
             X = 0; // Default start position
             Y = 0;
+            TotalFrames = 4; // Assuming 4 frames per animation
         }
 
-        // Load Sprites 
+        // Load Sprites with Error Handling
         public void LoadSprites(string idlePath, string runPath, string deathPath)
         {
-            SpriteSheets[CharacterState.Idle] = Image.FromFile(idlePath);
-            SpriteSheets[CharacterState.Running] = Image.FromFile(runPath);
-            SpriteSheets[CharacterState.Dead] = Image.FromFile(deathPath);
+            try
+            {
+                SpriteSheets[CharacterState.Idle] = Image.FromFile(idlePath);
+                SpriteSheets[CharacterState.Running] = Image.FromFile(runPath);
+                SpriteSheets[CharacterState.Dead] = Image.FromFile(deathPath);
+            }
+            catch (Exception ex)
+            {
+                throw new Exception($"Failed to load sprite sheet: {ex.Message}");
+            }
         }
 
         // Move Character
@@ -61,7 +68,23 @@ namespace Ascension
         {
             X += dx;
             Y += dy;
-            State = (dx == 0 && dy == 0) ? CharacterState.Idle : CharacterState.Running;
+
+            // Update state based on movement
+            if (dx == 0 && dy == 0)
+            {
+                State = CharacterState.Idle;
+            }
+            else
+            {
+                State = CharacterState.Running;
+            }
+        }
+
+        // Update Animation Frame
+        public void UpdateAnimationFrame()
+        {
+            // Increment frame with wrapping
+            CurrentFrame = (CurrentFrame + 1) % TotalFrames;
         }
 
         // Attack method
@@ -69,6 +92,21 @@ namespace Ascension
         {
             return Attack; // Can be overridden for unique attack logic
         }
-    }
 
+        // Draw Character on the World Map
+        public void Draw(Graphics g)
+        {
+            if (SpriteSheets.ContainsKey(State))
+            {
+                Image spriteSheet = SpriteSheets[State];
+                int frameX = CurrentFrame * FrameWidth;
+
+                // Draw the current animation frame
+                g.DrawImage(spriteSheet,
+                    new Rectangle(X, Y, FrameWidth, FrameHeight),       // Destination
+                    new Rectangle(frameX, 0, FrameWidth, FrameHeight), // Source
+                    GraphicsUnit.Pixel);
+            }
+        }
+    }
 }

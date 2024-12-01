@@ -11,7 +11,10 @@ namespace Ascension
         public Rogue()
             : base("Rogue", 90, 12, 7, 10, 100, 100)
         {
-            LoadSprites("Assets/Heroes/Rogue/Idle/Idle-Sheet.png", "Assets/Heroes/Rogue/Run/Run-Sheet.png", "Assets/Heroes/Rogue/Death/Death-Sheet.png");
+            LoadSprites(
+        "Assets/Heroes/Rogue/Idle/Idle-Sheet.png",
+        "Assets/Heroes/Rogue/Run/Run-Sheet.png",
+        "Assets/Heroes/Rogue/Death/Death-Sheet.png");
         }
 
         public override int AttackEnemy()

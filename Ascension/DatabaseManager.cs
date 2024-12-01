@@ -19,9 +19,13 @@ namespace Ascension
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
+                Console.WriteLine($"Saving Character: Username={character.Username}, PasswordHash={character.PasswordHash}");
+
+
                 var command = new SqlCommand(
-                    "INSERT INTO Characters (Name, ClassType, Health, Attack, Defense, Speed, PositionX, PositionY) " +
-                    "VALUES (@Name, @ClassType, @Health, @Attack, @Defense, @Speed, @PositionX, @PositionY)", connection);
+                     "INSERT INTO Characters (Name, ClassType, Health, Attack, Defense, Speed, PositionX, PositionY, Username, PasswordHash) " +
+                      "VALUES (@Name, @ClassType, @Health, @Attack, @Defense, @Speed, @PositionX, @PositionY, @Username, @PasswordHash)", connection);
+
 
                 command.Parameters.AddWithValue("@Name", character.Name);
                 command.Parameters.AddWithValue("@ClassType", character.GetType().Name); // E.g., Warrior, Mage
@@ -44,8 +48,8 @@ namespace Ascension
             using (SqlConnection connection = new SqlConnection(ConnectionString))
             {
                 connection.Open();
-                var command = new SqlCommand("SELECT * FROM Characters WHERE Name = @Name", connection);
-                command.Parameters.AddWithValue("@Name", characterName);
+                var command = new SqlCommand("SELECT * FROM Characters WHERE Username = @Username", connection);
+                command.Parameters.AddWithValue("@Username", characterName);
 
                 using (SqlDataReader reader = command.ExecuteReader())
                 {

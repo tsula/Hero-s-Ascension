@@ -39,6 +39,10 @@ namespace Ascension
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
 
+            // Testing to see if the username and password are being stored correctly
+            Console.WriteLine($"Username Entered: {username}");
+            Console.WriteLine($"Password Entered: {password}");
+
             // Validate inputs
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
@@ -51,7 +55,7 @@ namespace Ascension
 
             // Assign username and password to the character
             GameManager.PlayerCharacter.Username = username;
-            GameManager.PlayerCharacter.PasswordHash = password; // removed hashing
+            GameManager.PlayerCharacter.PasswordHash = password;    // removed hashing
 
             // Save the character to the database
             DatabaseManager dbManager = new DatabaseManager();

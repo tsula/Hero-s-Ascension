@@ -1,12 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ascension
@@ -20,7 +12,6 @@ namespace Ascension
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-            // Simulate loading a character from storage
             Character savedCharacter = LoadSavedCharacter();
 
             if (savedCharacter != null)
@@ -34,27 +25,53 @@ namespace Ascension
             }
             else
             {
-                MessageBox.Show("No saved character found!");
+                MessageBox.Show("Failed to load character. Please try again.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
-        /* !!! PLACEHOLDER !!!
-         * (replace with database logic)
-         */
         private Character LoadSavedCharacter()
         {
-            
-            return new Knight(); // example
+            try
+            {
+                // Get the username entered in the UserSignIn TextBox
+                string username = UserSignIn?.Text.Trim();
+
+                if (string.IsNullOrEmpty(username))
+                {
+                    MessageBox.Show("Please enter a username.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return null;
+                }
+
+                // Load the character from the database using DatabaseManager
+                DatabaseManager dbManager = new DatabaseManager();
+                Character loadedCharacter = dbManager.LoadCharacter(username);
+
+                if (loadedCharacter == null)
+                {
+                    MessageBox.Show("Character not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return null;
+                }
+
+                return loadedCharacter;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while loading the character: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return null;
+            }
         }
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
-            if (gameSelectScreen != null)
+
+            if (gameSelectScreen == null)
             {
-                gameSelectScreen.Show();
-                this.Hide();
+                gameSelectScreen = new GameSelectScreen();
             }
+
+            gameSelectScreen.Show();
+            this.Hide();
         }
     }
 }
