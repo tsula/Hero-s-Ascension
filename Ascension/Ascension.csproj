@@ -9,6 +9,30 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Shaman\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Shaman\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Shaman\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Warrior\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Warrior\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc - Warrior\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Orc Crew\Orc\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Base\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Base\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Base\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Run\Run-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Death\Death-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Idle\Idle-Sheet.png" />
+    <None Remove="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Run\Run-Sheet.png" />
     <None Remove="Assets\Heroes\Knight\Death\Death-Sheet.png" />
     <None Remove="Assets\Heroes\Knight\Idle\Idle-Sheet.png" />
     <None Remove="Assets\Heroes\Knight\Run\Run-Sheet.png" />
@@ -21,6 +45,81 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Rogue\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Rogue\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Rogue\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Shaman\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Shaman\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Shaman\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Warrior\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Warrior\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc - Warrior\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Orc Crew\Orc\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Base\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Base\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Base\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Rogue\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Death\Death-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Idle\Idle-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Warrior\Run\Run-Sheet.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Heroes\Knight\Death\Death-Sheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

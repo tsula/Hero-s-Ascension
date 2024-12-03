@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -8,6 +9,8 @@ namespace Ascension
     {
         private System.Windows.Forms.Timer animationTimer;
         private Image mapBackground; // Background image for the world map
+        private List<Enemy> enemies; // List of enemies on the world map
+        private Random random;       // Random generator for enemy spawning
 
         public WorldMap()
         {
@@ -31,6 +34,42 @@ namespace Ascension
             {
                 MessageBox.Show($"Failed to load world map background: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 mapBackground = null;
+            }
+
+            // Initialize enemy list and random generator
+            enemies = new List<Enemy>();
+            random = new Random();
+
+            SpawnEnemies(5); // Spawn 5 random enemies
+        }
+
+        private void SpawnEnemies(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                try
+                {
+                    // Randomly choose between Orc and Skeleton
+                    Enemy enemy;
+                    if (random.Next(2) == 0) // 50% chance for each
+                    {
+                        enemy = new Orc((Orc.OrcType)random.Next(4)); // Random Orc type
+                    }
+                    else
+                    {
+                        enemy = new Skeleton((Skeleton.SkeletonType)random.Next(4)); // Random Skeleton type
+                    }
+
+                    // Set random position for the enemy
+                    enemy.X = random.Next(0, this.Width - enemy.FrameWidth);
+                    enemy.Y = random.Next(0, this.Height - enemy.FrameHeight);
+
+                    enemies.Add(enemy); // Add to the enemies list
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Failed to create enemy: {ex.Message}");
+                }
             }
         }
 
@@ -57,6 +96,12 @@ namespace Ascension
                     new Rectangle(playerCharacter.X, playerCharacter.Y, playerCharacter.FrameWidth, playerCharacter.FrameHeight), // Destination
                     new Rectangle(frameX, 0, playerCharacter.FrameWidth, playerCharacter.FrameHeight), // Source
                     GraphicsUnit.Pixel);
+            }
+
+            // Draw the enemies
+            foreach (var enemy in enemies)
+            {
+                enemy.Draw(g);
             }
         }
 
@@ -90,19 +135,21 @@ namespace Ascension
                     return base.ProcessCmdKey(ref msg, keyData);
             }
 
-
             Invalidate(); // Redraw the entire form
             return true;
         }
-
 
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
             // Update the animation frame for the player character
             Character playerCharacter = GameManager.PlayerCharacter;
-
-            // Cycle through frames
             playerCharacter.CurrentFrame = (playerCharacter.CurrentFrame + 1) % playerCharacter.TotalFrames;
+
+            // Update the animation frames for all enemies
+            foreach (var enemy in enemies)
+            {
+                enemy.UpdateAnimationFrame();
+            }
 
             Invalidate(); // Redraw the entire form
         }

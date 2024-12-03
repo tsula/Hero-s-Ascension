@@ -14,7 +14,7 @@ namespace Ascension
         public int Speed { get; set; }
 
         // Animation and State
-        public enum EnemyState { Idle, Running, Dead }
+        public enum EnemyState { Idle, Run, Death }
         public EnemyState State { get; set; }
         public Dictionary<EnemyState, Image> SpriteSheets { get; set; } = new();
         public int CurrentFrame { get; set; }
@@ -47,8 +47,8 @@ namespace Ascension
             try
             {
                 SpriteSheets[EnemyState.Idle] = Image.FromFile(idlePath);
-                SpriteSheets[EnemyState.Running] = Image.FromFile(runPath);
-                SpriteSheets[EnemyState.Dead] = Image.FromFile(deathPath);
+                SpriteSheets[EnemyState.Run] = Image.FromFile(runPath);
+                SpriteSheets[EnemyState.Death] = Image.FromFile(deathPath);
             }
             catch (Exception ex)
             {
@@ -62,7 +62,7 @@ namespace Ascension
             X += dx;
             Y += dy;
 
-            State = (dx == 0 && dy == 0) ? EnemyState.Idle : EnemyState.Running;
+            State = (dx == 0 && dy == 0) ? EnemyState.Idle : EnemyState.Run;
         }
 
         // Attack method for the enemy
