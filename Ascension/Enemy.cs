@@ -74,7 +74,15 @@ namespace Ascension
         // Update the animation frame
         public void UpdateAnimationFrame()
         {
-            CurrentFrame = (CurrentFrame + 1) % TotalFrames;
+            if (TotalFrames > 0)
+            {
+                CurrentFrame = (CurrentFrame + 1) % TotalFrames;
+            }
+            else
+            {
+                // Log or handle the error case
+                Console.WriteLine("Error: TotalFrames is set to 0, animation cannot update.");
+            }
         }
 
         // Draw the enemy on the world map

@@ -19,6 +19,7 @@ namespace Ascension
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
+            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
             if (gameSelectScreen != null)
             {
@@ -29,6 +30,8 @@ namespace Ascension
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
+            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
+
             // Retrieve the selected class
             string selectedClass = "";
             if (radioButton1.Checked) selectedClass = "Knight";
@@ -73,6 +76,8 @@ namespace Ascension
             WorldMap worldMap = new WorldMap();
             worldMap.Show();
             this.Hide();
+
+            AudioManager.StopBackgroundSound(); // stop the background music
         }
     }
 }

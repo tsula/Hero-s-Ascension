@@ -16,6 +16,8 @@ namespace Ascension
         {
             InitializeComponent();
 
+            AudioManager.PlayBackgroundSound("Assets/Audio/Misc/worldmapLOOP.wav");
+
             // Enable double buffering to reduce flickering
             this.DoubleBuffered = true;
 

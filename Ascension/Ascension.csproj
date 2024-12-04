@@ -9,6 +9,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Assets\Audio\Misc\dungeonLOOP.wav" />
+    <None Remove="Assets\Audio\Misc\title.wav" />
+    <None Remove="Assets\Audio\Misc\titlesLOOP.wav" />
+    <None Remove="Assets\Audio\Misc\worldmapLOOP.wav" />
+    <None Remove="Assets\Audio\UIMenu\Confirm.wav" />
     <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Death\Death-Sheet.png" />
     <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Idle\Idle-Sheet.png" />
     <None Remove="Assets\Enemies\Orc Crew\Orc - Rogue\Run\Run-Sheet.png" />
@@ -45,6 +50,21 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Assets\Audio\Misc\titlesLOOP.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Misc\worldmapLOOP.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Misc\dungeonLOOP.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\Misc\title.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\Audio\UIMenu\Confirm.wav">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Assets\Enemies\Skeleton Crew\Skeleton - Mage\Death\Death-Sheet.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>

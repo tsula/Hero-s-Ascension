@@ -15,6 +15,9 @@ namespace Ascension
         public GameSelectScreen()
         {
             InitializeComponent();
+
+            // Play background music for the select screen
+            AudioManager.PlayBackgroundSound("Assets/Audio/Misc/worldmapLOOP.wav");
         }
 
         private void NewGameButton_Click(object sender, EventArgs e)
