@@ -47,5 +47,19 @@ namespace Ascension
             credits.Show();     // Goes to game credits
             this.Hide();
         }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Are you sure you want to exit the game?",
+                                    "Confirm Exit",
+                                    MessageBoxButtons.YesNo,
+                                    MessageBoxIcon.Question);
+
+            if (confirmResult == DialogResult.Yes)
+            {
+                AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav"); // Play confirmation sound if desired
+                Application.Exit(); // Exit the application
+            }
+        }
     }
 }

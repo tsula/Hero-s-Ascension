@@ -33,6 +33,7 @@
             LoadGameButton = new Button();
             OptionsButton = new Button();
             CreditsButton = new Button();
+            ExitButton = new Button();
             SuspendLayout();
             // 
             // NewGameButton
@@ -45,10 +46,9 @@
             NewGameButton.FlatStyle = FlatStyle.Flat;
             NewGameButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
             NewGameButton.ForeColor = Color.LightYellow;
-            NewGameButton.Location = new Point(350, 226);
-            NewGameButton.Margin = new Padding(1);
+            NewGameButton.Location = new Point(1000, 723);
             NewGameButton.Name = "NewGameButton";
-            NewGameButton.Size = new Size(131, 29);
+            NewGameButton.Size = new Size(374, 93);
             NewGameButton.TabIndex = 0;
             NewGameButton.Text = "New Game";
             NewGameButton.UseVisualStyleBackColor = false;
@@ -64,10 +64,9 @@
             LoadGameButton.FlatStyle = FlatStyle.Flat;
             LoadGameButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
             LoadGameButton.ForeColor = Color.LightYellow;
-            LoadGameButton.Location = new Point(350, 268);
-            LoadGameButton.Margin = new Padding(1);
+            LoadGameButton.Location = new Point(1000, 858);
             LoadGameButton.Name = "LoadGameButton";
-            LoadGameButton.Size = new Size(131, 31);
+            LoadGameButton.Size = new Size(374, 99);
             LoadGameButton.TabIndex = 1;
             LoadGameButton.Text = "Load Game";
             LoadGameButton.UseVisualStyleBackColor = false;
@@ -83,10 +82,9 @@
             OptionsButton.FlatStyle = FlatStyle.Flat;
             OptionsButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
             OptionsButton.ForeColor = Color.LightYellow;
-            OptionsButton.Location = new Point(350, 314);
-            OptionsButton.Margin = new Padding(1);
+            OptionsButton.Location = new Point(1000, 1005);
             OptionsButton.Name = "OptionsButton";
-            OptionsButton.Size = new Size(131, 30);
+            OptionsButton.Size = new Size(374, 96);
             OptionsButton.TabIndex = 2;
             OptionsButton.Text = "Options";
             OptionsButton.UseVisualStyleBackColor = false;
@@ -102,27 +100,44 @@
             CreditsButton.FlatStyle = FlatStyle.Flat;
             CreditsButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
             CreditsButton.ForeColor = Color.LightYellow;
-            CreditsButton.Location = new Point(350, 358);
-            CreditsButton.Margin = new Padding(1);
+            CreditsButton.Location = new Point(1000, 1146);
             CreditsButton.Name = "CreditsButton";
-            CreditsButton.Size = new Size(131, 29);
+            CreditsButton.Size = new Size(374, 93);
             CreditsButton.TabIndex = 3;
             CreditsButton.Text = "Credits";
             CreditsButton.UseVisualStyleBackColor = false;
             CreditsButton.Click += CreditsButton_Click;
             // 
+            // ExitButton
+            // 
+            ExitButton.Anchor = AnchorStyles.None;
+            ExitButton.BackColor = SystemColors.ControlDarkDark;
+            ExitButton.BackgroundImage = (Image)resources.GetObject("ExitButton.BackgroundImage");
+            ExitButton.BackgroundImageLayout = ImageLayout.Stretch;
+            ExitButton.FlatAppearance.BorderSize = 0;
+            ExitButton.FlatStyle = FlatStyle.Flat;
+            ExitButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
+            ExitButton.ForeColor = Color.LightYellow;
+            ExitButton.Location = new Point(1000, 1286);
+            ExitButton.Name = "ExitButton";
+            ExitButton.Size = new Size(374, 93);
+            ExitButton.TabIndex = 4;
+            ExitButton.Text = "Exit Game";
+            ExitButton.UseVisualStyleBackColor = false;
+            ExitButton.Click += ExitButton_Click;
+            // 
             // GameSelectScreen
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(20F, 48F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.selectScreen;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(802, 456);
+            ClientSize = new Size(2291, 1459);
+            Controls.Add(ExitButton);
             Controls.Add(CreditsButton);
             Controls.Add(OptionsButton);
             Controls.Add(LoadGameButton);
             Controls.Add(NewGameButton);
-            Margin = new Padding(1);
             Name = "GameSelectScreen";
             Text = "Game Selection";
             WindowState = FormWindowState.Maximized;
@@ -135,5 +150,6 @@
         private Button LoadGameButton;
         private Button OptionsButton;
         private Button CreditsButton;
+        private Button ExitButton;
     }
 }
