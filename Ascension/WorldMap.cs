@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
- 
+
 namespace Ascension
 {
     public partial class WorldMap : Form
@@ -69,8 +69,8 @@ namespace Ascension
                     }
 
                     // Set random position for the enemy
-                    enemy.X = random.Next(0, this.Width - enemy.FrameWidth);
-                    enemy.Y = random.Next(0, this.Height - enemy.FrameHeight);
+                    enemy.X = random.Next(0, this.Width - (enemy.FrameWidth * 3));
+                    enemy.Y = random.Next(0, this.Height - (enemy.FrameHeight * 3));
 
                     enemies.Add(enemy); // Add to the enemies list
                 }
@@ -100,16 +100,33 @@ namespace Ascension
                 Image spriteSheet = playerCharacter.SpriteSheets[playerCharacter.State];
                 int frameX = playerCharacter.CurrentFrame * playerCharacter.FrameWidth;
 
+                // Scale the player sprite by 3x
+                int scaledWidth = playerCharacter.FrameWidth * 3;
+                int scaledHeight = playerCharacter.FrameHeight * 3;
+
                 g.DrawImage(spriteSheet,
-                    new Rectangle(playerCharacter.X, playerCharacter.Y, playerCharacter.FrameWidth, playerCharacter.FrameHeight), // Destination
-                    new Rectangle(frameX, 0, playerCharacter.FrameWidth, playerCharacter.FrameHeight), // Source
+                    new Rectangle(playerCharacter.X, playerCharacter.Y, scaledWidth, scaledHeight), // Destination (scaled size)
+                    new Rectangle(frameX, 0, playerCharacter.FrameWidth, playerCharacter.FrameHeight), // Source (original size)
                     GraphicsUnit.Pixel);
             }
 
             // Draw the enemies
             foreach (var enemy in enemies)
             {
-                enemy.Draw(g);
+                if (enemy.SpriteSheets.ContainsKey(enemy.State))
+                {
+                    Image spriteSheet = enemy.SpriteSheets[enemy.State];
+                    int frameX = enemy.CurrentFrame * enemy.FrameWidth;
+
+                    // Scale the enemy sprite by 3x
+                    int scaledWidth = enemy.FrameWidth * 3;
+                    int scaledHeight = enemy.FrameHeight * 3;
+
+                    g.DrawImage(spriteSheet,
+                        new Rectangle(enemy.X, enemy.Y, scaledWidth, scaledHeight), // Destination (scaled size)
+                        new Rectangle(frameX, 0, enemy.FrameWidth, enemy.FrameHeight), // Source (original size)
+                        GraphicsUnit.Pixel);
+                }
             }
         }
 
