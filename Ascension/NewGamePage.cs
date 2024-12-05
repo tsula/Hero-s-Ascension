@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ascension
@@ -19,6 +12,7 @@ namespace Ascension
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
+            // Play confirm sound and navigate back to the game select screen
             AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
             if (gameSelectScreen != null)
@@ -30,6 +24,7 @@ namespace Ascension
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
+            // Play confirm sound effect
             AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
 
             // Retrieve the selected class
@@ -38,13 +33,16 @@ namespace Ascension
             else if (radioButton2.Checked) selectedClass = "Wizard";
             else if (radioButton3.Checked) selectedClass = "Rogue";
 
+            // Validate class selection
+            if (string.IsNullOrEmpty(selectedClass))
+            {
+                MessageBox.Show("Please select a character class.", "Input Error");
+                return;
+            }
+
             // Get the username and password
             string username = txtUsername.Text.Trim();
             string password = txtPassword.Text.Trim();
-
-            // Testing to see if the username and password are being stored correctly
-            Console.WriteLine($"Username Entered: {username}");
-            Console.WriteLine($"Password Entered: {password}");
 
             // Validate inputs
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
@@ -53,23 +51,25 @@ namespace Ascension
                 return;
             }
 
-            // Create the new character
-            GameManager.CreateNewCharacter(selectedClass);
-
-            // Assign username and password to the character
-            GameManager.PlayerCharacter.Username = username;
-            GameManager.PlayerCharacter.PasswordHash = password;    // removed hashing
-
-            // Save the character to the database
-            DatabaseManager dbManager = new DatabaseManager();
+            // Create the new character and assign credentials
             try
             {
-                dbManager.SaveCharacter(GameManager.PlayerCharacter);
+                // Create new character with class and username
+                GameManager.CreateNewCharacter(selectedClass, username);
+
+                // Set the password (hashed or plain text as per your requirements)
+                GameManager.PlayerCharacter.PasswordHash = password;
+
+                // Save the character to the database
+                DatabaseManager dbManager = new DatabaseManager();
+                dbManager.SavePlayerState(GameManager.PlayerCharacter);
+
                 MessageBox.Show("Character created and saved successfully!");
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred while saving the character: {ex.Message}");
+                MessageBox.Show($"An error occurred while creating the character: {ex.Message}", "Error");
+                return;
             }
 
             // Navigate to the World Map
@@ -77,7 +77,8 @@ namespace Ascension
             worldMap.Show();
             this.Hide();
 
-            AudioManager.StopBackgroundSound(); // stop the background music
+            // Stop the background music
+            AudioManager.StopBackgroundSound();
         }
     }
 }

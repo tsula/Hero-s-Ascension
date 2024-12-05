@@ -1,19 +1,15 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 
 namespace Ascension
 {
     public static class GameManager
     {
+        // The current player character
         public static Character PlayerCharacter { get; set; }
 
-        public static void CreateNewCharacter(string characterType)
+        // Creates a new character based on the selected type and assigns the username
+        public static void CreateNewCharacter(string characterType, string username)
         {
-            // Create a new character based on the type chosen
             switch (characterType)
             {
                 case "Knight":
@@ -31,12 +27,21 @@ namespace Ascension
                 default:
                     throw new ArgumentException("Invalid character type");
             }
+
+            PlayerCharacter.Username = username;
         }
 
+        // Loads a saved character into the game
         public static void LoadCharacter(Character savedCharacter)
         {
             PlayerCharacter = savedCharacter;
         }
-    }
 
+        // Initializes a player with the given username and character
+        public static void InitializePlayer(string username, Character character)
+        {
+            character.Username = username;
+            PlayerCharacter = character;
+        }
+    }
 }

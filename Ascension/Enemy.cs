@@ -26,16 +26,15 @@ namespace Ascension
         public int X { get; set; }
         public int Y { get; set; }
 
-        // Constructor for the base Enemy class
-        protected Enemy(string name, int health, int attack, int defense, int speed, int frameWidth, int frameHeight)
+        // Constructor
+        protected Enemy(string name, int health, int attack, int defense, int speed)
         {
             Name = name;
             Health = health;
             Attack = attack;
             Defense = defense;
             Speed = speed;
-            FrameWidth = frameWidth;
-            FrameHeight = frameHeight;
+
             State = EnemyState.Idle; // Default state
             X = 0; // Default start position
             Y = 0;
@@ -49,12 +48,30 @@ namespace Ascension
                 SpriteSheets[EnemyState.Idle] = Image.FromFile(idlePath);
                 SpriteSheets[EnemyState.Run] = Image.FromFile(runPath);
                 SpriteSheets[EnemyState.Death] = Image.FromFile(deathPath);
+
+                // Call SetAnimationDimensions after loading the first sprite sheet
+                SetAnimationDimensions(SpriteSheets[EnemyState.Idle], 6); // Assuming 6 frames per animation
             }
             catch (Exception ex)
             {
                 throw new Exception($"Failed to load sprite sheet: {ex.Message}");
             }
         }
+
+        // Set frame dimensions and total frames based on the sprite sheet
+        public void SetAnimationDimensions(Image spriteSheet, int totalFrames)
+        {
+            if (spriteSheet == null)
+                throw new ArgumentNullException(nameof(spriteSheet), "Sprite sheet cannot be null");
+
+            if (totalFrames <= 0)
+                throw new ArgumentException("Total frames must be greater than zero", nameof(totalFrames));
+
+            FrameWidth = 128 / 4; // 32 pixels per frame
+            FrameHeight = 32;
+            TotalFrames = 4;
+        }
+
 
         // Move the enemy
         public void Move(int dx, int dy)
@@ -65,7 +82,7 @@ namespace Ascension
             State = (dx == 0 && dy == 0) ? EnemyState.Idle : EnemyState.Run;
         }
 
-        // Attack method for the enemy
+        // Attack method
         public virtual int AttackPlayer()
         {
             return Attack; // Can be overridden for specific enemy types
@@ -76,12 +93,7 @@ namespace Ascension
         {
             if (TotalFrames > 0)
             {
-                CurrentFrame = (CurrentFrame + 1) % TotalFrames;
-            }
-            else
-            {
-                // Log or handle the error case
-                Console.WriteLine("Error: TotalFrames is set to 0, animation cannot update.");
+                CurrentFrame = (CurrentFrame + 1) % TotalFrames; // loop through the frames
             }
         }
 

@@ -18,6 +18,7 @@ namespace Ascension
 
             if (savedCharacter != null)
             {
+                // Assign the loaded character to the GameManager
                 GameManager.LoadCharacter(savedCharacter);
 
                 // Navigate to the World Map
@@ -25,7 +26,8 @@ namespace Ascension
                 worldMap.Show();
                 this.Hide();
 
-                AudioManager.StopBackgroundSound(); // stop the background music
+                // Stop the background music
+                AudioManager.StopBackgroundSound();
             }
             else
             {
@@ -55,6 +57,9 @@ namespace Ascension
                     MessageBox.Show("Character not found in the database.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     return null;
                 }
+
+                // Initialize the player with the username
+                GameManager.InitializePlayer(username, loadedCharacter);
 
                 return loadedCharacter;
             }

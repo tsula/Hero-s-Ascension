@@ -62,6 +62,12 @@ namespace Ascension
                         enemy = new Skeleton((Skeleton.SkeletonType)random.Next(4)); // Random Skeleton type
                     }
 
+                    // Set animation dimensions based on sprite sheet and total frames
+                    if (enemy.SpriteSheets.ContainsKey(Enemy.EnemyState.Idle))
+                    {
+                        enemy.SetAnimationDimensions(enemy.SpriteSheets[Enemy.EnemyState.Idle], 6); // Assuming 6 frames per animation
+                    }
+
                     // Set random position for the enemy
                     enemy.X = random.Next(0, this.Width - enemy.FrameWidth);
                     enemy.Y = random.Next(0, this.Height - enemy.FrameHeight);
@@ -154,6 +160,44 @@ namespace Ascension
             }
 
             Invalidate(); // Redraw the entire form
+        }
+
+        private void SaveButton_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Ensure the player character exists
+                Character playerCharacter = GameManager.PlayerCharacter;
+                if (playerCharacter == null || string.IsNullOrWhiteSpace(playerCharacter.Username))
+                {
+                    MessageBox.Show("Player character not found or username is missing. Save failed.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
+                // Save player state and enemies
+                DatabaseManager dbManager = new DatabaseManager();
+                dbManager.SavePlayerState(playerCharacter); // Save player state
+                dbManager.SaveEnemyState(enemies, playerCharacter.Username); // Save enemies associated with the player
+
+                // Provide feedback
+                AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Save.wav");
+                MessageBox.Show("Game saved successfully!", "Save Game", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred while saving the game: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void ExitButton_Click(object sender, EventArgs e)
+        {
+            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
+            GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
+            if (gameSelectScreen != null)
+            {
+                gameSelectScreen.Show(); // Show the previously hidden form
+                this.Hide();           // Hide the current form
+            }
         }
     }
 }

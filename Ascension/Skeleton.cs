@@ -6,7 +6,7 @@ public class Skeleton : Enemy
     public SkeletonType Type { get; private set; }
 
     public Skeleton(SkeletonType type)
-        : base("Skeleton", 50, 10, 8, 5, 64, 64) // Default stats for Skeleton Base
+        : base("Skeleton", 50, 10, 8, 5) // Default stats for Skeleton Base
     {
         Type = type;
 

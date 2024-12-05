@@ -6,7 +6,7 @@ public class Orc : Enemy
     public OrcType Type { get; private set; }
 
     public Orc(OrcType type)
-        : base("Orc", 70, 15, 10, 4, 64, 64) // Default stats for Orc Base
+        : base("Orc", 70, 15, 10, 4) // Default stats for Orc Base
     {
         Type = type;
 
