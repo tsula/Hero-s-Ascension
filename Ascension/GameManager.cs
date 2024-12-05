@@ -14,15 +14,12 @@ namespace Ascension
             {
                 case "Knight":
                     PlayerCharacter = new Knight();
-                    Console.WriteLine("You have chosen the path of the Knight!");
                     break;
                 case "Wizard":
                     PlayerCharacter = new Wizard();
-                    Console.WriteLine("You have chosen the path of the Wizard!");
                     break;
                 case "Rogue":
                     PlayerCharacter = new Rogue();
-                    Console.WriteLine("You have chosen the path of the Rogue!");
                     break;
                 default:
                     throw new ArgumentException("Invalid character type");

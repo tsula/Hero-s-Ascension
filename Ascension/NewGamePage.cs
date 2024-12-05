@@ -24,7 +24,6 @@ namespace Ascension
 
         private void CreateBtn_Click(object sender, EventArgs e)
         {
-            // Play confirm sound effect
             AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
 
             // Retrieve the selected class
@@ -54,17 +53,23 @@ namespace Ascension
             // Create the new character and assign credentials
             try
             {
-                // Create new character with class and username
                 GameManager.CreateNewCharacter(selectedClass, username);
-
-                // Set the password (hashed or plain text as per your requirements)
-                GameManager.PlayerCharacter.PasswordHash = password;
+                GameManager.PlayerCharacter.PasswordHash = password; // Store the password
 
                 // Save the character to the database
                 DatabaseManager dbManager = new DatabaseManager();
                 dbManager.SavePlayerState(GameManager.PlayerCharacter);
 
-                MessageBox.Show("Character created and saved successfully!");
+                // Display specific message based on the selected class
+                string message = selectedClass switch
+                {
+                    "Knight" => "You have chosen the path of the Knight!",
+                    "Wizard" => "You have chosen the path of the Wizard!",
+                    "Rogue" => "You have chosen the path of the Rogue!",
+                    _ => "Character created successfully!"
+                };
+
+                MessageBox.Show($"Character created and saved successfully!\n{message}");
             }
             catch (Exception ex)
             {
