@@ -9,7 +9,7 @@ namespace Ascension
     public class Rogue : Character
     {
         public Rogue()
-            : base("Rogue", 90, 12, 7, 10, 100, 100)
+            : base("Rogue", 90, 12, 7, 10)
         {
             LoadSprites(
         "Assets/Heroes/Rogue/Idle/Idle-Sheet.png",

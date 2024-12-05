@@ -18,9 +18,9 @@ namespace Ascension
         public CharacterState State { get; set; }
         public Dictionary<CharacterState, Image> SpriteSheets { get; set; } = new();
         public int CurrentFrame { get; set; }
-        public int FrameWidth { get; set; }
-        public int FrameHeight { get; set; }
-        public int TotalFrames { get; set; }
+        public int FrameWidth { get; private set; }
+        public int FrameHeight { get; private set; }
+        public int TotalFrames { get; private set; }
 
         // Position on the world map
         public int X { get; set; }
@@ -31,7 +31,7 @@ namespace Ascension
         public string PasswordHash { get; set; }
 
         // Constructor
-        public Character(string name, int health, int attack, int defense, int speed, int frameWidth, int frameHeight)
+        public Character(string name, int health, int attack, int defense, int speed)
         {
             Name = name;
             Health = health;
@@ -39,13 +39,10 @@ namespace Ascension
             Defense = defense;
             Speed = speed;
 
-            FrameWidth = 128 / 4; // 32 pixels per frame
-            FrameHeight = 32;
+            X = 0;
+            Y = 0;
 
             State = CharacterState.Idle; // Default state
-            X = 0; // Default start position
-            Y = 0;
-            TotalFrames = 4; // Assuming 4 frames per animation
         }
 
         // Load Sprites with Error Handling
@@ -56,10 +53,27 @@ namespace Ascension
                 SpriteSheets[CharacterState.Idle] = Image.FromFile(idlePath);
                 SpriteSheets[CharacterState.Running] = Image.FromFile(runPath);
                 SpriteSheets[CharacterState.Dead] = Image.FromFile(deathPath);
+
+                // Default dimensions for Idle
+                SetAnimationDimensions(CharacterState.Idle, 128, 32, 4); // 128x32, 4 frames
+
+                // Default dimensions for Running
+                SetAnimationDimensions(CharacterState.Running, 384, 64, 6); // 384x64, 6 frames
             }
             catch (Exception ex)
             {
                 throw new Exception($"Failed to load sprite sheet: {ex.Message}");
+            }
+        }
+
+        // Set animation dimensions for a specific state
+        private void SetAnimationDimensions(CharacterState state, int sheetWidth, int sheetHeight, int frameCount)
+        {
+            if (SpriteSheets.ContainsKey(state))
+            {
+                FrameWidth = sheetWidth / frameCount;
+                FrameHeight = sheetHeight;
+                TotalFrames = frameCount;
             }
         }
 
@@ -69,14 +83,22 @@ namespace Ascension
             X += dx;
             Y += dy;
 
+            // Ensure the character remains within the screen bounds
+            X = Math.Max(0, Math.Min(X, 1059 - FrameWidth * 3));
+            Y = Math.Max(0, Math.Min(Y, 1133 - FrameHeight * 3));
+
             // Update state based on movement
-            if (dx == 0 && dy == 0)
+            State = (dx == 0 && dy == 0) ? CharacterState.Idle : CharacterState.Running;
+
+            // Update animation dimensions for the current state
+            switch (State)
             {
-                State = CharacterState.Idle;
-            }
-            else
-            {
-                State = CharacterState.Running;
+                case CharacterState.Idle:
+                    SetAnimationDimensions(CharacterState.Idle, 128, 32, 4);
+                    break;
+                case CharacterState.Running:
+                    SetAnimationDimensions(CharacterState.Running, 384, 64, 6);
+                    break;
             }
         }
 
@@ -103,8 +125,8 @@ namespace Ascension
 
                 // Draw the current animation frame
                 g.DrawImage(spriteSheet,
-                    new Rectangle(X, Y, FrameWidth, FrameHeight),       // Destination
-                    new Rectangle(frameX, 0, FrameWidth, FrameHeight), // Source
+                    new Rectangle(X, Y, FrameWidth * 3, FrameHeight * 3), // Scale 3x
+                    new Rectangle(frameX, 0, FrameWidth, FrameHeight),   // Source
                     GraphicsUnit.Pixel);
             }
         }

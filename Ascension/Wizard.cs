@@ -9,7 +9,7 @@ namespace Ascension
     public class Wizard : Character
     {
         public Wizard()
-            : base("Wizard", 80, 20, 5, 7, 100, 100) 
+            : base("Wizard", 80, 20, 5, 7)
             {
             LoadSprites(
         "Assets/Heroes/Wizard/Idle/Idle-Sheet.png",

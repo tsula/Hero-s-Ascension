@@ -95,7 +95,7 @@ namespace Ascension
             // Draw the player character
             Character playerCharacter = GameManager.PlayerCharacter;
 
-            if (playerCharacter.SpriteSheets.ContainsKey(playerCharacter.State))
+            if (playerCharacter?.SpriteSheets.ContainsKey(playerCharacter.State) == true)
             {
                 Image spriteSheet = playerCharacter.SpriteSheets[playerCharacter.State];
                 int frameX = playerCharacter.CurrentFrame * playerCharacter.FrameWidth;
@@ -141,19 +141,23 @@ namespace Ascension
                 return base.ProcessCmdKey(ref msg, keyData);
             }
 
-            // Move the character based on the arrow keys
+            // Move the character based on the arrow keys or WASD keys
             switch (keyData)
             {
                 case Keys.Up:
+                case Keys.W:
                     playerCharacter.Move(0, -stepSize);
                     break;
                 case Keys.Down:
+                case Keys.S:
                     playerCharacter.Move(0, stepSize);
                     break;
                 case Keys.Left:
+                case Keys.A:
                     playerCharacter.Move(-stepSize, 0);
                     break;
                 case Keys.Right:
+                case Keys.D:
                     playerCharacter.Move(stepSize, 0);
                     break;
                 default:
@@ -164,11 +168,15 @@ namespace Ascension
             return true;
         }
 
+
         private void AnimationTimer_Tick(object sender, EventArgs e)
         {
             // Update the animation frame for the player character
             Character playerCharacter = GameManager.PlayerCharacter;
-            playerCharacter.CurrentFrame = (playerCharacter.CurrentFrame + 1) % playerCharacter.TotalFrames;
+            if (playerCharacter != null)
+            {
+                playerCharacter.UpdateAnimationFrame();
+            }
 
             // Update the animation frames for all enemies
             foreach (var enemy in enemies)
