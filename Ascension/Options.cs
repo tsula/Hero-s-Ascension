@@ -26,5 +26,7 @@ namespace Ascension
                 this.Hide();
             }
         }
+
+
     }
 }

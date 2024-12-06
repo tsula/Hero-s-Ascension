@@ -42,6 +42,7 @@
             UserlblSignIn.Anchor = AnchorStyles.None;
             UserlblSignIn.AutoSize = true;
             UserlblSignIn.BackColor = Color.Transparent;
+            UserlblSignIn.Image = (Image)resources.GetObject("UserlblSignIn.Image");
             UserlblSignIn.Location = new Point(235, 156);
             UserlblSignIn.Margin = new Padding(2, 0, 2, 0);
             UserlblSignIn.Name = "UserlblSignIn";
@@ -54,6 +55,7 @@
             PWlblSignIn.Anchor = AnchorStyles.None;
             PWlblSignIn.AutoSize = true;
             PWlblSignIn.BackColor = Color.Transparent;
+            PWlblSignIn.Image = (Image)resources.GetObject("PWlblSignIn.Image");
             PWlblSignIn.Location = new Point(235, 215);
             PWlblSignIn.Margin = new Padding(2, 0, 2, 0);
             PWlblSignIn.Name = "PWlblSignIn";
@@ -126,7 +128,7 @@
             Controls.Add(PWlblSignIn);
             Controls.Add(UserlblSignIn);
             Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            ForeColor = Color.LightYellow;
+            ForeColor = Color.Maroon;
             Margin = new Padding(2, 1, 2, 1);
             Name = "LoadGamePage";
             Text = "Load Game";

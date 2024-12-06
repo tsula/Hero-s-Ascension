@@ -41,10 +41,11 @@
             SaveButton.FlatAppearance.BorderSize = 0;
             SaveButton.FlatStyle = FlatStyle.Flat;
             SaveButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SaveButton.ForeColor = Color.Crimson;
-            SaveButton.Location = new Point(1, 955);
+            SaveButton.ForeColor = Color.Maroon;
+            SaveButton.Location = new Point(192, 19);
+            SaveButton.Margin = new Padding(1, 1, 1, 1);
             SaveButton.Name = "SaveButton";
-            SaveButton.Size = new Size(181, 63);
+            SaveButton.Size = new Size(69, 27);
             SaveButton.TabIndex = 1;
             SaveButton.Text = "Save";
             SaveButton.UseVisualStyleBackColor = false;
@@ -59,10 +60,11 @@
             ExitButton.FlatAppearance.BorderSize = 0;
             ExitButton.FlatStyle = FlatStyle.Flat;
             ExitButton.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            ExitButton.ForeColor = Color.Crimson;
-            ExitButton.Location = new Point(885, 0);
+            ExitButton.ForeColor = Color.Maroon;
+            ExitButton.Location = new Point(263, 19);
+            ExitButton.Margin = new Padding(1, 1, 1, 1);
             ExitButton.Name = "ExitButton";
-            ExitButton.Size = new Size(139, 63);
+            ExitButton.Size = new Size(82, 27);
             ExitButton.TabIndex = 2;
             ExitButton.Text = "Exit";
             ExitButton.UseVisualStyleBackColor = false;
@@ -70,14 +72,16 @@
             // 
             // WorldMap
             // 
-            AutoScaleDimensions = new SizeF(20F, 48F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.worldmap;
-            ClientSize = new Size(1023, 1030);
+            ClientSize = new Size(358, 234);
             Controls.Add(ExitButton);
             Controls.Add(SaveButton);
+            Margin = new Padding(1, 1, 1, 1);
             Name = "WorldMap";
             Text = "World Map";
+            WindowState = FormWindowState.Maximized;
             ResumeLayout(false);
         }
 
