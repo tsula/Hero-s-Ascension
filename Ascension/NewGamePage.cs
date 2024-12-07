@@ -8,17 +8,41 @@ namespace Ascension
         public NewGamePage()
         {
             InitializeComponent();
+
+            // Add event handlers for radio button selection
+            radioButton1.CheckedChanged += CharacterSelectionChanged;
+            radioButton2.CheckedChanged += CharacterSelectionChanged;
+            radioButton3.CheckedChanged += CharacterSelectionChanged;
+        }
+
+        private void CharacterSelectionChanged(object sender, EventArgs e)
+        {
+            // Play equip.wav sound when a character is selected
+            if (((RadioButton)sender).Checked) // Only play sound when the radio button is checked
+            {
+                AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
+            }
         }
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
-            // Play confirm sound and navigate back to the game select screen
+            // Play confirm sound effect
             AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
+
+            // Get the GameSelectScreen form instance
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
             if (gameSelectScreen != null)
             {
-                gameSelectScreen.Show(); // Show the previously hidden form
-                this.Hide();           // Hide the current form
+                // Show the previously hidden GameSelectScreen form
+                gameSelectScreen.Show();
+                this.Hide(); // Hide the current form
+            }
+            else
+            {
+                // If GameSelectScreen form is not found, create a new instance
+                gameSelectScreen = new GameSelectScreen();
+                gameSelectScreen.Show();
+                this.Hide();
             }
         }
 

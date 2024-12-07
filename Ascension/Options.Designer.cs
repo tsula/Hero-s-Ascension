@@ -35,6 +35,9 @@
             label3 = new Label();
             label4 = new Label();
             label5 = new Label();
+            label6 = new Label();
+            MusicToggle = new CheckBox();
+            SoundToggle = new CheckBox();
             SuspendLayout();
             // 
             // ReturnBtn
@@ -105,6 +108,41 @@
             label5.TabIndex = 5;
             label5.Text = "Attack Kay";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Image = (Image)resources.GetObject("label6.Image");
+            label6.Location = new Point(288, 286);
+            label6.Name = "label6";
+            label6.Size = new Size(66, 22);
+            label6.TabIndex = 6;
+            label6.Text = "Audio";
+            // 
+            // MusicToggle
+            // 
+            MusicToggle.AutoSize = true;
+            MusicToggle.BackgroundImage = (Image)resources.GetObject("MusicToggle.BackgroundImage");
+            MusicToggle.Location = new Point(402, 288);
+            MusicToggle.Name = "MusicToggle";
+            MusicToggle.Padding = new Padding(5, 0, 0, 0);
+            MusicToggle.Size = new Size(92, 26);
+            MusicToggle.TabIndex = 7;
+            MusicToggle.Text = "Music";
+            MusicToggle.UseVisualStyleBackColor = true;
+            MusicToggle.CheckedChanged += MusicToggle_CheckedChanged;
+            // 
+            // SoundToggle
+            // 
+            SoundToggle.AutoSize = true;
+            SoundToggle.BackgroundImage = (Image)resources.GetObject("SoundToggle.BackgroundImage");
+            SoundToggle.Location = new Point(500, 288);
+            SoundToggle.Name = "SoundToggle";
+            SoundToggle.Padding = new Padding(5, 0, 0, 0);
+            SoundToggle.Size = new Size(150, 26);
+            SoundToggle.TabIndex = 8;
+            SoundToggle.Text = "Sound Effects";
+            SoundToggle.UseVisualStyleBackColor = true;
+            // 
             // Options
             // 
             AutoScaleDimensions = new SizeF(14F, 22F);
@@ -112,6 +150,9 @@
             BackgroundImage = (Image)resources.GetObject("$this.BackgroundImage");
             BackgroundImageLayout = ImageLayout.Zoom;
             ClientSize = new Size(802, 456);
+            Controls.Add(SoundToggle);
+            Controls.Add(MusicToggle);
+            Controls.Add(label6);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -136,5 +177,8 @@
         private Label label3;
         private Label label4;
         private Label label5;
+        private Label label6;
+        private CheckBox MusicToggle;
+        private CheckBox SoundToggle;
     }
 }

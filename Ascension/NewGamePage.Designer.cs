@@ -161,6 +161,8 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "Knight";
             radioButton1.UseVisualStyleBackColor = false;
+            radioButton1.CheckedChanged += CharacterSelectionChanged;
+            radioButton1.Click += CharacterSelectionChanged;
             // 
             // radioButton2
             // 
@@ -179,6 +181,8 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Mage";
             radioButton2.UseVisualStyleBackColor = false;
+            radioButton2.CheckedChanged += CharacterSelectionChanged;
+            radioButton2.Click += CharacterSelectionChanged;
             // 
             // radioButton3
             // 
@@ -196,6 +200,8 @@
             radioButton3.TabStop = true;
             radioButton3.Text = "Rogue";
             radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += CharacterSelectionChanged;
+            radioButton3.Click += CharacterSelectionChanged;
             // 
             // pictureBox1
             // 
