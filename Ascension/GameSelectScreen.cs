@@ -16,9 +16,17 @@ namespace Ascension
         {
             InitializeComponent();
 
-            // Play background music for the select screen
-            AudioManager.PlayBackgroundSound("Assets/Audio/Misc/worldmapLOOP.wav");
-        }
+            // Load saved preferences
+            AudioManager.IsMusicEnabled = Settings1.Default.MusicEnabled;
+            AudioManager.IsSoundEnabled = Settings1.Default.SoundEnabled;
+
+            // Start background music only if music is enabled
+            if (AudioManager.IsMusicEnabled)
+            {
+                AudioManager.PlayBackgroundSound("Assets/Audio/Misc/worldmapLOOP.wav");
+            }
+        
+    }
 
         private void NewGameButton_Click(object sender, EventArgs e)
         {

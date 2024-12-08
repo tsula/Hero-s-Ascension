@@ -8,12 +8,25 @@ namespace Ascension
         public LoadGamePage()
         {
             InitializeComponent();
+
+            // Attach PlayButtonClickSound to all buttons on the form
+            foreach (Control control in this.Controls)
+            {
+                if (control is Button button)
+                {
+                    button.Click += PlayButtonClickSound;
+                }
+            }
+        }
+
+        private void PlayButtonClickSound(object sender, EventArgs e)
+        {
+            // Play confirm.wav for all button clicks
+            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
         }
 
         private void SignInBtn_Click(object sender, EventArgs e)
         {
-            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
-
             Character savedCharacter = LoadSavedCharacter();
 
             if (savedCharacter != null)
@@ -72,8 +85,6 @@ namespace Ascension
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
-            AudioManager.PlayEffectSound("Assets/Audio/UIMenu/Confirm.wav");
-
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
 
             if (gameSelectScreen == null)

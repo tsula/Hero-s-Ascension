@@ -54,7 +54,7 @@
             ReturnBtn.FlatAppearance.BorderSize = 0;
             ReturnBtn.FlatStyle = FlatStyle.Flat;
             ReturnBtn.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            ReturnBtn.ForeColor = Color.LightYellow;
+            ReturnBtn.ForeColor = Color.Maroon;
             ReturnBtn.Location = new Point(289, 391);
             ReturnBtn.Margin = new Padding(1);
             ReturnBtn.Name = "ReturnBtn";
@@ -71,7 +71,7 @@
             CreateBtn.FlatAppearance.BorderSize = 0;
             CreateBtn.FlatStyle = FlatStyle.Flat;
             CreateBtn.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            CreateBtn.ForeColor = Color.LightYellow;
+            CreateBtn.ForeColor = Color.Maroon;
             CreateBtn.Location = new Point(415, 391);
             CreateBtn.Margin = new Padding(1);
             CreateBtn.Name = "CreateBtn";
@@ -87,7 +87,8 @@
             CreateUserNameLbl.AutoSize = true;
             CreateUserNameLbl.BackColor = Color.Transparent;
             CreateUserNameLbl.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            CreateUserNameLbl.ForeColor = Color.LightYellow;
+            CreateUserNameLbl.ForeColor = Color.Maroon;
+            CreateUserNameLbl.Image = (Image)resources.GetObject("CreateUserNameLbl.Image");
             CreateUserNameLbl.Location = new Point(262, 130);
             CreateUserNameLbl.Margin = new Padding(1, 0, 1, 0);
             CreateUserNameLbl.Name = "CreateUserNameLbl";
@@ -101,7 +102,8 @@
             CreatePasswordLbl.AutoSize = true;
             CreatePasswordLbl.BackColor = Color.Transparent;
             CreatePasswordLbl.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            CreatePasswordLbl.ForeColor = Color.LightYellow;
+            CreatePasswordLbl.ForeColor = Color.Maroon;
+            CreatePasswordLbl.Image = (Image)resources.GetObject("CreatePasswordLbl.Image");
             CreatePasswordLbl.Location = new Point(262, 160);
             CreatePasswordLbl.Margin = new Padding(1, 0, 1, 0);
             CreatePasswordLbl.Name = "CreatePasswordLbl";
@@ -133,7 +135,7 @@
             ClassLbl.AutoSize = true;
             ClassLbl.BackColor = Color.Transparent;
             ClassLbl.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            ClassLbl.ForeColor = Color.LightYellow;
+            ClassLbl.ForeColor = Color.Maroon;
             ClassLbl.Image = (Image)resources.GetObject("ClassLbl.Image");
             ClassLbl.Location = new Point(377, 219);
             ClassLbl.Margin = new Padding(1, 0, 1, 0);
@@ -149,7 +151,7 @@
             radioButton1.BackColor = Color.Transparent;
             radioButton1.BackgroundImage = (Image)resources.GetObject("radioButton1.BackgroundImage");
             radioButton1.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            radioButton1.ForeColor = Color.LightYellow;
+            radioButton1.ForeColor = Color.Maroon;
             radioButton1.Location = new Point(261, 353);
             radioButton1.Margin = new Padding(1);
             radioButton1.Name = "radioButton1";
@@ -159,6 +161,8 @@
             radioButton1.TabStop = true;
             radioButton1.Text = "Knight";
             radioButton1.UseVisualStyleBackColor = false;
+            radioButton1.CheckedChanged += CharacterSelectionChanged;
+            radioButton1.Click += CharacterSelectionChanged;
             // 
             // radioButton2
             // 
@@ -167,7 +171,7 @@
             radioButton2.BackColor = Color.Transparent;
             radioButton2.BackgroundImage = (Image)resources.GetObject("radioButton2.BackgroundImage");
             radioButton2.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            radioButton2.ForeColor = Color.LightYellow;
+            radioButton2.ForeColor = Color.Maroon;
             radioButton2.Location = new Point(376, 353);
             radioButton2.Margin = new Padding(1);
             radioButton2.Name = "radioButton2";
@@ -177,6 +181,8 @@
             radioButton2.TabStop = true;
             radioButton2.Text = "Mage";
             radioButton2.UseVisualStyleBackColor = false;
+            radioButton2.CheckedChanged += CharacterSelectionChanged;
+            radioButton2.Click += CharacterSelectionChanged;
             // 
             // radioButton3
             // 
@@ -184,7 +190,7 @@
             radioButton3.AutoSize = true;
             radioButton3.BackgroundImage = (Image)resources.GetObject("radioButton3.BackgroundImage");
             radioButton3.Font = new Font("Matura MT Script Capitals", 12F, FontStyle.Bold);
-            radioButton3.ForeColor = Color.LightYellow;
+            radioButton3.ForeColor = Color.Maroon;
             radioButton3.Location = new Point(484, 353);
             radioButton3.Margin = new Padding(1);
             radioButton3.Name = "radioButton3";
@@ -194,6 +200,8 @@
             radioButton3.TabStop = true;
             radioButton3.Text = "Rogue";
             radioButton3.UseVisualStyleBackColor = true;
+            radioButton3.CheckedChanged += CharacterSelectionChanged;
+            radioButton3.Click += CharacterSelectionChanged;
             // 
             // pictureBox1
             // 
@@ -251,6 +259,7 @@
             Controls.Add(CreateUserNameLbl);
             Controls.Add(CreateBtn);
             Controls.Add(ReturnBtn);
+            ForeColor = Color.Maroon;
             Margin = new Padding(1);
             Name = "NewGamePage";
             Text = "New Game";

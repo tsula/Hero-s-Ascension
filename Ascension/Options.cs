@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Ascension
@@ -15,10 +8,29 @@ namespace Ascension
         public Options()
         {
             InitializeComponent();
+
+            // Load preferences on form load
+            LoadPreferences();
+        }
+
+        private void LoadPreferences()
+        {
+            // Set the toggle states based on saved preferences
+            MusicToggle.Checked = Settings1.Default.MusicEnabled;
+            SoundToggle.Checked = Settings1.Default.SoundEnabled;
+        }
+
+        private void SavePreferences()
+        {
+            // Save preferences to settings
+            Settings1.Default.MusicEnabled = MusicToggle.Checked;
+            Settings1.Default.SoundEnabled = SoundToggle.Checked;
+            Settings1.Default.Save();
         }
 
         private void ReturnBtn_Click(object sender, EventArgs e)
         {
+            SavePreferences(); // Save preferences before returning
             GameSelectScreen gameSelectScreen = Application.OpenForms["GameSelectScreen"] as GameSelectScreen;
             if (gameSelectScreen != null)
             {
@@ -26,5 +38,30 @@ namespace Ascension
                 this.Hide();
             }
         }
+
+        private void MusicToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            // Update the AudioManager's music state
+            AudioManager.IsMusicEnabled = MusicToggle.Checked;
+
+            if (AudioManager.IsMusicEnabled)
+            {
+                // Restart the background music if toggled on
+                AudioManager.PlayBackgroundSound("Assets/Audio/Misc/worldmapLOOP.wav");
+            }
+            else
+            {
+                // Stop the music if toggled off
+                AudioManager.StopBackgroundSound();
+            }
+        }
+
+        private void SoundToggle_CheckedChanged(object sender, EventArgs e)
+        {
+            // Update the AudioManager's sound effects state
+            AudioManager.IsSoundEnabled = SoundToggle.Checked;
+        }
+
+
     }
 }
